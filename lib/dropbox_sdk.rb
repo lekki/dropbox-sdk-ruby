@@ -1314,10 +1314,11 @@ class DropboxClient
   # Remember: Dropbox treats file names in a case-insensitive but case-preserving
   # way.  To facilitate this, the _path_ strings above are lower-cased versions of
   # the actual path.  The _metadata_ dicts have the original, case-preserved path.
-  def delta(cursor=nil, path_prefix=nil)
+  def delta(cursor=nil, path_prefix=nil, include_media_info=false)
     params = {
       'cursor' => cursor,
       'path_prefix' => path_prefix,
+      'include_media_info' => include_media_info
     }
 
     response = @session.do_post "/delta", params
